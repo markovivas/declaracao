@@ -286,4 +286,4 @@ Se quiser proteção adicional (por exemplo, servir PDFs apenas após checar per
 ## 9. Exemplo de local da assinatura
 
 1. Coordenadas manuais (usadas apenas se selecionar "Posição manual"):
-X (mm): 80 e  Y (mm): 165
+X (mm):80 e  Y (mm):165
