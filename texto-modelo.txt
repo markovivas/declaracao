@@ -1,0 +1,32 @@
+<!-- Título centralizado -->
+<h2 style="text-align:center; margin-bottom:30px;">DECLARAÇÃO DE VÍNCULO EMPREGATÍCIO</h2>
+
+<!-- Corpo da declaração -->
+<p style="text-align:justify; line-height:1.5;">
+Declaramos, para os devidos fins, a quem possa interessar, em especial à Prefeitura Municipal de Três Corações – MG, que o(a) Sr.(a) <strong><NOME_COMPLETO></strong>, Brasileiro(a), <strong><estado_civil></strong>, inscrito(a) no CPF sob o nº <strong><CPF></strong> e no RG nº <strong><RG></strong>, matrícula nº <strong><MATRICULA></strong>, mantém vínculo empregatício com a Prefeitura Municipal de Três Corações, inscrita no CNPJ sob o nº <strong><CNPJ_DA_EMPRESA></strong>.
+</p>
+
+<p style="text-align:justify; line-height:1.5;">
+O(a) referido(a) empregado(a) exerce a função de <strong><CARGO></strong>, com jornada de trabalho de <strong><JORNADA_SEMANAL></strong> horas semanais.
+</p>
+
+<p style="text-align:justify; line-height:1.5;">
+Declaramos que as informações acima são verdadeiras, firmando a presente declaração para que produza os efeitos legais necessários.
+</p>
+
+<br><br>
+
+<p style="text-align:left;">
+<CIDADE>, <DATA>.
+</p>
+
+<br><br><br>
+<!-- Tabela de assinaturas improvisada -->
+<p style="text-align:center;">
+    <br>
+    <strong><NOME_COMPLETO></strong>
+    <CARGO>
+    <br><br>
+    <strong><RESPONSÁVEL_PELA_DECLARAÇÃO></strong>
+<CARGO_DO_RESPONSÁVEL>
+</p>
