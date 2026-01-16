@@ -495,6 +495,16 @@ function dve_handle_frontend_post() {
             update_post_meta($post_id, 'dve_cargo', $cargo);
             update_post_meta($post_id, 'dve_jornada', $jornada);
             update_post_meta($post_id, 'dve_status', 'pendente');
+
+            // Gera número sequencial anual
+            $ano_atual = date('Y');
+            $option_name = 'dve_seq_' . $ano_atual;
+            $seq = get_option($option_name, 0);
+            $seq++;
+            update_option($option_name, $seq);
+            update_post_meta($post_id, 'dve_numero_sequencial', $seq);
+            update_post_meta($post_id, 'dve_ano_sequencial', $ano_atual);
+
             if ($assinatura) {
                 update_post_meta($post_id, 'dve_assinatura_solicitante', $assinatura);
             }
@@ -679,6 +689,32 @@ function dve_gerar_pdf_para_declaracao($post_id) {
             }
         }
     }
+
+    // Rodapé com contador e informações
+    $seq = get_post_meta($post_id, 'dve_numero_sequencial', true);
+    $ano_seq = get_post_meta($post_id, 'dve_ano_sequencial', true);
+
+    // Fallback se não tiver número gerado (ex: declarações antigas)
+    if (!$seq) {
+        $ano_atual = date('Y');
+        $option_name = 'dve_seq_' . $ano_atual;
+        $seq = get_option($option_name, 0);
+        $seq++;
+        update_option($option_name, $seq);
+        $ano_seq = $ano_atual;
+        update_post_meta($post_id, 'dve_numero_sequencial', $seq);
+        update_post_meta($post_id, 'dve_ano_sequencial', $ano_seq);
+    }
+
+    $matricula = get_post_meta($post_id, 'dve_matricula', true);
+    $data_db = get_post_meta($post_id, 'dve_data', true);
+    $data_fmt = $data_db ? date('d/m/Y', strtotime($data_db)) : date('d/m/Y');
+    $rodape_texto = sprintf('%s - Matr. %s - Declaracao n%s de %s', $data_fmt, $matricula, $seq, $ano_seq);
+
+    $pdf->SetAutoPageBreak(false); // Desativa quebra automática para não pular página
+    $pdf->SetY(-20); // Sobe para 20mm da borda inferior
+    $pdf->SetFont('helvetica', '', 8); // Fonte tamanho 8 (pequeno)
+    $pdf->Cell(0, 10, $rodape_texto, 0, 0, 'R'); // Alinhado à direita
 
     // Salva arquivo
     $pdf->Output($filepath, 'F');
