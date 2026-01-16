@@ -714,6 +714,7 @@ function dve_gerar_pdf_para_declaracao($post_id) {
     $pdf->SetAutoPageBreak(false); // Desativa quebra automática para não pular página
     $pdf->SetY(-20); // Sobe para 20mm da borda inferior
     $pdf->SetFont('helvetica', '', 8); // Fonte tamanho 8 (pequeno)
+    $pdf->SetTextColor(150, 150, 150); // Define cor cinza claro (RGB)
     $pdf->Cell(0, 10, $rodape_texto, 0, 0, 'R'); // Alinhado à direita
 
     // Salva arquivo
